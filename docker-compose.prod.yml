@@ -1,0 +1,44 @@
+# Production overrides. Merge onto the base file rather than replacing it:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+#
+# What changes vs. the base (dev) file:
+#   - No source bind-mounts: containers run exactly what was baked into the
+#     image at build time, not whatever happens to be on the host filesystem.
+#   - Backend runs with ENV=production (see app/core/config.py) - this
+#     refuses to start at all with a placeholder JWT secret or localhost
+#     CORS origins, and switches uvicorn to multi-worker, no-reload mode
+#     (see entrypoint.sh).
+#   - Frontend builds via Dockerfile.prod: a static Vite build served by
+#     nginx, not the Vite dev server - dev server is not meant to be
+#     internet-facing (no production hardening, verbose error overlays, etc).
+#   - Postgres and Redis no longer publish ports to the host - only the
+#     backend container needs to reach them, over the internal Docker
+#     network, which works via service-name DNS regardless of host port
+#     publication.
+
+services:
+  postgres:
+    ports: !reset []
+
+  redis:
+    ports: !reset []
+
+  backend:
+    environment:
+      ENV: production
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+    volumes: !reset []
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+    ports:
+      - "80:80"
+    volumes: !reset []

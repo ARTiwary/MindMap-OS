@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.yarn/
+
+# Python virtual environments
+backend/.venv
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+.env.example
+
+# Build output
+dist/
+build/
+.next/
+out/
+.vite/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Testing
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local databases
+*.sqlite
+*.sqlite3
+
+# Secrets
+*.pem
+*.key
+credentials.json
+serviceAccountKey.json

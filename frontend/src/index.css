@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-canvas text-white/90 font-sans antialiased transition-colors duration-200;
+}
+
+html.light body {
+  @apply bg-canvas-light text-black/85;
+}
+
+::selection {
+  @apply bg-accent/30;
+}
+
+.card {
+  @apply rounded-xl2 border border-border bg-surface;
+}
+
+html.light .card {
+  @apply border-border-light bg-surface-light;
+}
+
+.skeleton {
+  @apply animate-pulse rounded-lg bg-white/5;
+}
+
+html.light .skeleton {
+  @apply bg-black/5;
+}
+
+/* React Flow theme overrides */
+.react-flow__attribution {
+  display: none;
+}

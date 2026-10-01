@@ -1,0 +1,66 @@
+import enum
+
+
+class NodeType(str, enum.Enum):
+    IDEA = "IDEA"
+    NOTE = "NOTE"
+    CONCEPT = "CONCEPT"
+    QUESTION = "QUESTION"
+    RESOURCE = "RESOURCE"
+    PROJECT = "PROJECT"
+    BOOK = "BOOK"
+    COURSE = "COURSE"
+    PERSON = "PERSON"
+    TOPIC = "TOPIC"
+    REFERENCE = "REFERENCE"
+
+
+class NodeStatus(str, enum.Enum):
+    DRAFT = "DRAFT"
+    ACTIVE = "ACTIVE"
+    ARCHIVED = "ARCHIVED"
+    COMPLETED = "COMPLETED"
+
+
+class Importance(str, enum.Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
+
+class RelationshipType(str, enum.Enum):
+    RELATED_TO = "RELATED_TO"
+    PARENT_OF = "PARENT_OF"
+    CHILD_OF = "CHILD_OF"
+    REQUIRES = "REQUIRES"
+    DEPENDS_ON = "DEPENDS_ON"
+    INSPIRES = "INSPIRES"
+    REFERENCES = "REFERENCES"
+    DERIVED_FROM = "DERIVED_FROM"
+    PART_OF = "PART_OF"
+    CONTRADICTS = "CONTRADICTS"
+    SUPPORTS = "SUPPORTS"
+
+
+class ResourceType(str, enum.Enum):
+    ARTICLE = "ARTICLE"
+    VIDEO = "VIDEO"
+    DOCUMENTATION = "DOCUMENTATION"
+    BOOK = "BOOK"
+    COURSE = "COURSE"
+    GITHUB = "GITHUB"
+    PAPER = "PAPER"
+    WEBSITE = "WEBSITE"
+    OTHER = "OTHER"
+
+
+class ActivityAction(str, enum.Enum):
+    NODE_CREATED = "NODE_CREATED"
+    NODE_UPDATED = "NODE_UPDATED"
+    NODE_DELETED = "NODE_DELETED"
+    NODE_VIEWED = "NODE_VIEWED"
+    RELATIONSHIP_CREATED = "RELATIONSHIP_CREATED"
+    RELATIONSHIP_DELETED = "RELATIONSHIP_DELETED"
+    TAG_ADDED = "TAG_ADDED"
+    RESOURCE_ADDED = "RESOURCE_ADDED"
